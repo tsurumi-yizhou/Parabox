@@ -64,7 +64,7 @@ class HiltApplication : Application(), Configuration.Provider, ImageLoaderFactor
 
     @OptIn(ExperimentalMaterial3AdaptiveApi::class)
     override fun onCreate() {
-        pineHook()
+//        pineHook()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             HiddenApiBypass.addHiddenApiExemptions("");
         }

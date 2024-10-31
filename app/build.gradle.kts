@@ -22,8 +22,8 @@ android {
         minSdk = 26
         //noinspection EditedTargetSdkVersion
         targetSdk = 35
-        versionCode = 15
-        versionName = "2.0"
+        versionCode = 17
+        versionName = "2.0.0-alpha01"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -123,7 +123,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     // compose bom
-    implementation(platform("androidx.compose:compose-bom:2024.09.03"))
+    implementation(platform("androidx.compose:compose-bom:2024.10.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -134,7 +134,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite")
     implementation("androidx.compose.material3:material3-window-size-class-android")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.09.03"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
@@ -148,7 +148,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-placeholder-material3:$accVersion")
 
     // Adaptive
-    val adaptiveVersion = "1.0.0-alpha12"
+    val adaptiveVersion = "1.1.0-alpha06"
     implementation("androidx.compose.material3.adaptive:adaptive:$adaptiveVersion")
     implementation("androidx.compose.material3.adaptive:adaptive-layout-android:$adaptiveVersion")
     implementation("androidx.compose.material3.adaptive:adaptive-navigation-android:$adaptiveVersion")
@@ -303,7 +303,7 @@ dependencies {
 
     // Development Kit
     implementation(project(":Parabox Development Kit"))
-    implementation("com.ojhdt:parabox-development-kit:1.0.6")
+//    implementation("com.ojhdt:parabox-development-kit:1.0.6")
 
     // Refine
     compileOnly(project(":app:hidden-api"))

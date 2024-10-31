@@ -53,10 +53,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -274,7 +274,9 @@ fun NormalChatPage(
         }
     }
     BackHandler(layoutType == LayoutType.NORMAL) {
-        scaffoldNavigator?.navigateTo(ListDetailPaneScaffoldRole.List)
+        coroutineScope.launch {
+            scaffoldNavigator?.navigateTo(ListDetailPaneScaffoldRole.List)
+        }
         onMainSharedEvent(MainSharedEvent.ShowNavigationBar(true))
     }
 
@@ -382,7 +384,9 @@ fun NormalChatPage(
                         if (state.chatDetail.selectedMessageList.isNotEmpty()) {
                             onEvent(MessagePageEvent.ClearSelectedMessage)
                         } else {
-                            scaffoldNavigator?.navigateTo(ListDetailPaneScaffoldRole.List)
+                            coroutineScope.launch {
+                                scaffoldNavigator?.navigateTo(ListDetailPaneScaffoldRole.List)
+                            }
                             onMainSharedEvent(MainSharedEvent.ShowNavigationBar(true))
                         }
                     }, onEvent = onEvent

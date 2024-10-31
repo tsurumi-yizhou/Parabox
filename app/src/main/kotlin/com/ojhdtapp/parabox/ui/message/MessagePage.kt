@@ -373,7 +373,9 @@ fun MessagePage(
                                         chat = item,
                                         onClick = {
                                             viewModel.sendEvent(MessagePageEvent.LoadMessage(item))
-                                            scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                            coroutineScope.launch {
+                                                scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                            }
                                             mainSharedViewModel.sendEvent(MainSharedEvent.ShowNavigationBar(false))
                                         },
                                         onLongClick = {
@@ -503,7 +505,9 @@ fun MessagePage(
                                     enableMarqueeEffectOnChatName = mainSharedState.datastore.enableMarqueeEffectOnChatName,
                                     onClick = {
                                         viewModel.sendEvent(MessagePageEvent.LoadMessage(item.chat))
-                                        scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                        coroutineScope.launch {
+                                            scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                        }
                                         mainSharedViewModel.sendEvent(MainSharedEvent.ShowNavigationBar(false))
                                     },
                                     onLongClick = {

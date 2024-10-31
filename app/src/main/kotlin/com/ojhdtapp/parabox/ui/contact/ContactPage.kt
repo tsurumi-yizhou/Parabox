@@ -51,6 +51,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,6 +75,7 @@ import com.ojhdtapp.parabox.ui.common.SearchContent
 import com.ojhdtapp.parabox.ui.common.clearFocusOnKeyboardDismiss
 import com.ojhdtapp.parabox.ui.message.chat.PlainContactItem
 import com.ojhdtapp.parabox.ui.message.chat.EmptyPlainContactItem
+import kotlinx.coroutines.launch
 import me.saket.cascade.CascadeDropdownMenu
 import my.nanihadesuka.compose.InternalLazyColumnScrollbar
 import my.nanihadesuka.compose.ScrollbarSelectionMode
@@ -90,6 +92,7 @@ fun ContactPage(
     layoutType: LayoutType,
     onMainSharedEvent: (MainSharedEvent) -> Unit
 ) {
+    val coroutineScope = rememberCoroutineScope()
     val hapticFeedback = LocalHapticFeedback.current
     val snackBarHostState = remember { SnackbarHostState() }
     val state by viewModel.uiState.collectAsState()
@@ -382,8 +385,10 @@ fun ContactPage(
                                 extName = item.connectionInfo.alias,
                                 onClick = {
                                     viewModel.sendEvent(ContactPageEvent.LoadContactDetail(item))
-                                    scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
                                     onMainSharedEvent(MainSharedEvent.ShowNavigationBar(false))
+                                    coroutineScope.launch {
+                                        scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                    }
                                 })
                         }
                     }
@@ -411,8 +416,10 @@ fun ContactPage(
                                 extName = item.connectionInfo.alias,
                                 onClick = {
                                     viewModel.sendEvent(ContactPageEvent.LoadContactDetail(item))
-                                    scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
                                     onMainSharedEvent(MainSharedEvent.ShowNavigationBar(false))
+                                    coroutineScope.launch {
+                                        scaffoldNavigator.navigateTo(ListDetailPaneScaffoldRole.Detail)
+                                    }
                                 })
                         }
                     }

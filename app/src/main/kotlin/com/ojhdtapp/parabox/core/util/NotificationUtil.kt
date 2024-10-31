@@ -38,7 +38,6 @@ import com.ojhdtapp.parabox.domain.model.Contact
 import com.ojhdtapp.parabox.domain.model.Message
 import com.ojhdtapp.parabox.domain.receiver.MarkAsReadReceiver
 import com.ojhdtapp.parabox.domain.receiver.ReplyReceiver
-import com.ojhdtapp.paraboxdevelopmentkit.messagedto.SendTargetType
 import com.ojhdtapp.paraboxdevelopmentkit.model.message.ParaboxImage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
@@ -313,7 +312,7 @@ class NotificationUtil @Inject constructor(
                                     addMessage(m)
                                 }
                             }
-                            isGroupConversation = chat.type == SendTargetType.GROUP
+                            isGroupConversation = true
                             conversationTitle = chat.name
                         }
                     ).apply {

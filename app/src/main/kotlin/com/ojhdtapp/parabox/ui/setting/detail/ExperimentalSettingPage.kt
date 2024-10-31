@@ -23,6 +23,7 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.navigation.BackNavigationBehavior
 import androidx.compose.material3.adaptive.navigation.ThreePaneScaffoldNavigator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
@@ -37,6 +38,7 @@ import com.ojhdtapp.parabox.ui.setting.SettingHeader
 import com.ojhdtapp.parabox.ui.setting.SettingItem
 import com.ojhdtapp.parabox.ui.setting.SettingPageEvent
 import com.ojhdtapp.parabox.ui.setting.SettingPageState
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
 @Composable
@@ -49,8 +51,11 @@ fun ExperimentalSettingPage(
     onEvent: (SettingPageEvent) -> Unit,
     onMainSharedEvent: (MainSharedEvent) -> Unit,
 ) {
+    val coroutineScope = rememberCoroutineScope()
     BackHandler(enabled = layoutType != LayoutType.SPLIT) {
-        scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        coroutineScope.launch {
+            scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        }
     }
     if (layoutType == LayoutType.SPLIT) {
         Surface(
@@ -97,7 +102,11 @@ fun ExperimentalSettingPage(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = { scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest) }) {
+                        IconButton(onClick = {
+                            coroutineScope.launch {
+                                scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+                            }
+                        }) {
                             Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "back")
                         }
                     },

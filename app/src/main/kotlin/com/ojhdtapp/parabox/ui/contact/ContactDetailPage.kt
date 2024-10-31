@@ -54,6 +54,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,6 +65,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import app.cash.molecule.launchMolecule
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.ojhdtapp.parabox.core.util.ImageUtil
@@ -78,6 +80,7 @@ import com.ojhdtapp.parabox.ui.common.LayoutType
 import com.ojhdtapp.parabox.ui.common.LocalSystemUiController
 import com.ojhdtapp.parabox.ui.common.SystemUiController
 import com.ojhdtapp.parabox.ui.common.placeholder
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -149,6 +152,7 @@ private fun ContactDetailPageContent(
     layoutType: LayoutType,
     onMainSharedEvent: (MainSharedEvent) -> Unit
 ) {
+    val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
     val backgroundHeightPx = with(LocalDensity.current) { 108.dp.toPx() }
     val isScrolled by remember {
@@ -169,7 +173,9 @@ private fun ContactDetailPageContent(
         }
     }
     BackHandler(layoutType == LayoutType.NORMAL) {
-        scaffoldNavigator.navigateBack()
+        coroutineScope.launch {
+            scaffoldNavigator.navigateBack()
+        }
         systemUiController.reset()
         onMainSharedEvent(MainSharedEvent.ShowNavigationBar(true))
     }
@@ -181,7 +187,9 @@ private fun ContactDetailPageContent(
                     if (layoutType == LayoutType.NORMAL) {
                         IconButton(
                             onClick = {
-                                scaffoldNavigator.navigateBack()
+                                coroutineScope.launch {
+                                    scaffoldNavigator.navigateBack()
+                                }
                                 systemUiController.reset()
                                 onMainSharedEvent(MainSharedEvent.ShowNavigationBar(true))
                             }) {

@@ -80,8 +80,11 @@ fun StorageSettingPage(
     onEvent: (SettingPageEvent) -> Unit,
     onMainSharedEvent: (MainSharedEvent) -> Unit,
 ) {
+    val coroutineScope = rememberCoroutineScope()
     BackHandler(enabled = layoutType != LayoutType.SPLIT) {
-        scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        coroutineScope.launch {
+            scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        }
     }
     if (layoutType == LayoutType.SPLIT) {
         Surface(
@@ -128,7 +131,11 @@ fun StorageSettingPage(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = { scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest) }) {
+                        IconButton(onClick = {
+                            coroutineScope.launch {
+                                scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+                            }
+                        }) {
                             Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "back")
                         }
                     },

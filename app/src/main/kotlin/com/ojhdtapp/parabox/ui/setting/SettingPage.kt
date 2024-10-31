@@ -30,6 +30,7 @@ import androidx.compose.material3.adaptive.navigation.ThreePaneScaffoldNavigator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -49,6 +50,8 @@ import com.ojhdtapp.parabox.ui.navigation.DefaultRootComponent
 import com.ojhdtapp.parabox.ui.navigation.DefaultSettingComponent
 import com.ojhdtapp.parabox.ui.navigation.RootComponent
 import com.ojhdtapp.parabox.ui.navigation.SettingComponent
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
 @Composable
@@ -66,6 +69,7 @@ fun SettingPage(
 ) {
     val state by viewModel.uiState.collectAsState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -119,7 +123,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.GeneralSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.GeneralSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.GENERAL)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.GENERAL)
+                    }
                 }
             }
             item {
@@ -135,7 +141,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.ExtensionSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.ExtensionSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.ADDONS)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.ADDONS)
+                    }
                 }
             }
             item {
@@ -151,7 +159,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.LabelSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.LabelSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.LABELS)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.LABELS)
+                    }
                 }
             }
             item {
@@ -167,7 +177,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.AppearanceSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.AppearanceSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.APPEARANCE)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.APPEARANCE)
+                    }
                 }
             }
             item {
@@ -183,7 +195,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.NotificationSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.NotificationSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.NOTIFICATION)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.NOTIFICATION)
+                    }
                 }
             }
             item {
@@ -199,7 +213,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.StorageSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.StorageSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.STORAGE)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.STORAGE)
+                    }
                 }
             }
             item {
@@ -215,7 +231,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.CloudSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.CloudSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.CLOUD)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.CLOUD)
+                    }
                 }
             }
             item {
@@ -231,7 +249,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.ExperimentalSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.ExperimentalSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.EXPERIMENTAL)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.EXPERIMENTAL)
+                    }
                 }
             }
             item {
@@ -247,7 +267,9 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting)
                     }
-                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.HELP)
+                    coroutineScope.launch {
+                        scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.HELP)
+                    }
                 }
             }
         }

@@ -47,6 +47,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,6 +78,7 @@ import com.ojhdtapp.parabox.ui.setting.SettingPageEvent
 import com.ojhdtapp.parabox.ui.setting.SettingPageState
 import com.ojhdtapp.paraboxdevelopmentkit.extension.ParaboxConnectionStatus
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import me.saket.cascade.CascadeDropdownMenu
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
@@ -92,8 +94,11 @@ fun ExtensionSettingPage(
     onEvent: (SettingPageEvent) -> Unit,
     onMainSharedEvent: (MainSharedEvent) -> Unit,
 ) {
+    val coroutineScope = rememberCoroutineScope()
     BackHandler(enabled = layoutType != LayoutType.SPLIT) {
-        scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        coroutineScope.launch {
+            scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+        }
     }
     if (layoutType == LayoutType.SPLIT) {
         Surface(
@@ -142,7 +147,11 @@ fun ExtensionSettingPage(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = { scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest) }) {
+                        IconButton(onClick = {
+                            coroutineScope.launch {
+                                scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
+                            }
+                        }) {
                             Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "back")
                         }
                     },

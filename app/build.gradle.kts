@@ -123,7 +123,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     // compose bom
-    implementation(platform("androidx.compose:compose-bom:2024.10.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.11.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -148,7 +148,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-placeholder-material3:$accVersion")
 
     // Adaptive
-    val adaptiveVersion = "1.1.0-alpha06"
+    val adaptiveVersion = "1.1.0-alpha07"
     implementation("androidx.compose.material3.adaptive:adaptive:$adaptiveVersion")
     implementation("androidx.compose.material3.adaptive:adaptive-layout-android:$adaptiveVersion")
     implementation("androidx.compose.material3.adaptive:adaptive-navigation-android:$adaptiveVersion")
@@ -162,7 +162,7 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:$lottieVersion")
 
     // Decompose
-    val decomposeVersion = "3.0.0"
+    val decomposeVersion = "3.2.1"
     implementation("com.arkivanov.decompose:decompose:$decomposeVersion")
     implementation("com.arkivanov.decompose:extensions-compose:$decomposeVersion")
 

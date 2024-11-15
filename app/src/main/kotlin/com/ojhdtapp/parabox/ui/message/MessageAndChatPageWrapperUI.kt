@@ -10,6 +10,7 @@ import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirectiveWithTwoPanesOnMediumWidth
+import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -101,9 +102,8 @@ fun MessageAndChatPageWrapperUI(
             viewModel.sendEvent(MessagePageEvent.UpdateEditingChatTags(null))
         })
 
-    ListDetailPaneScaffold(
-        directive = scaffoldNavigator.scaffoldDirective,
-        value = scaffoldNavigator.scaffoldValue,
+    NavigableListDetailPaneScaffold(
+        navigator = scaffoldNavigator,
         modifier = modifier.padding(
             horizontal = if (layoutType == LayoutType.NORMAL) 0.dp else 16.dp,
         ),

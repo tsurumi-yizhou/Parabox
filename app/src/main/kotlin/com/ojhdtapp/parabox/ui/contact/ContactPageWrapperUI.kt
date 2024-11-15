@@ -9,6 +9,7 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
+import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -51,12 +52,11 @@ fun ContactPageWrapperUI(
             }
         }
     }
-    ListDetailPaneScaffold(
+    NavigableListDetailPaneScaffold(
         modifier = modifier.padding(
             horizontal = if (layoutType == LayoutType.NORMAL) 0.dp else 16.dp,
         ),
-        directive = scaffoldNavigator.scaffoldDirective,
-        value = scaffoldNavigator.scaffoldValue,
+        navigator = scaffoldNavigator,
         listPane = {
             AnimatedPane(modifier = Modifier.preferredWidth(352.dp)) {
                 ContactPage(

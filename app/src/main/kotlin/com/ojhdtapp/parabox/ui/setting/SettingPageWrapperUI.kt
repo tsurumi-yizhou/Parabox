@@ -82,7 +82,7 @@ fun SettingPageWrapperUi(
 //    val viewModel = hiltViewModel<SettingPageViewModel>()
     val state by viewModel.uiState.collectAsState()
     val mainSharedState by mainSharedViewModel.uiState.collectAsState()
-    val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<Setting>()
+    val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<Setting>( )
     val layoutType by remember {
         derivedStateOf {
             if (scaffoldNavigator.scaffoldDirective.maxHorizontalPartitions == 1) {
@@ -160,14 +160,13 @@ fun SettingPageWrapperUi(
                 }
             }
     }
-    ListDetailPaneScaffold(
+    NavigableListDetailPaneScaffold(
         modifier = modifier
             .background(MaterialTheme.colorScheme.surfaceContainer)
             .padding(
                 horizontal = if (layoutType == LayoutType.NORMAL) 0.dp else 16.dp,
             ),
-        directive = scaffoldNavigator.scaffoldDirective,
-        value = scaffoldNavigator.scaffoldValue,
+        navigator = scaffoldNavigator,
         listPane = {
             AnimatedPane(modifier = Modifier.preferredWidth(352.dp)) {
                 SettingPage(
@@ -362,5 +361,6 @@ fun SettingPageWrapperUi(
                     }
                 }
             }
-        })
+        },
+    )
 }

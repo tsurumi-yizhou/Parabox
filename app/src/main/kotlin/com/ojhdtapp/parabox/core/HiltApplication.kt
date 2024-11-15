@@ -66,7 +66,7 @@ class HiltApplication : Application(), Configuration.Provider, ImageLoaderFactor
     override fun onCreate() {
 //        pineHook()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            HiddenApiBypass.addHiddenApiExemptions("");
+            HiddenApiBypass.addHiddenApiExemptions("")
         }
         super.onCreate()
     }

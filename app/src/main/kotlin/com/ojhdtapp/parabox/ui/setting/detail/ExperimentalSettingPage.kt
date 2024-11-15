@@ -52,11 +52,6 @@ fun ExperimentalSettingPage(
     onMainSharedEvent: (MainSharedEvent) -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
-    BackHandler(enabled = layoutType != LayoutType.SPLIT) {
-        coroutineScope.launch {
-            scaffoldNavigator.navigateBack(BackNavigationBehavior.PopLatest)
-        }
-    }
     if (layoutType == LayoutType.SPLIT) {
         Surface(
             modifier = Modifier

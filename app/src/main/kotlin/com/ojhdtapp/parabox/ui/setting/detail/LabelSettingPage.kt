@@ -244,42 +244,42 @@ private fun Content(
                 dragDropState = dragDropState,
                 index = index + 1
             ) { isDragging ->
-                Box {
-                    var isMenuVisible by remember {
-                        mutableStateOf(false)
-                    }
-                    CascadeDropdownMenu(
-                        expanded = isMenuVisible,
-                        onDismissRequest = { isMenuVisible = false },
-                        offset = DpOffset(16.dp, 0.dp),
-                        properties = PopupProperties(
-                            dismissOnBackPress = true,
-                            dismissOnClickOutside = true,
-                            focusable = true
-                        ),
-                        shape = MaterialTheme.shapes.medium,
-                    ) {
-                        androidx.compose.material3.DropdownMenuItem(
-                            text = { Text("删除") },
-                            onClick = {
-                                onMainSharedEvent(MainSharedEvent.OnChatFilterRemoved(item))
-                                isMenuVisible = false
-                            },
-                            leadingIcon = {
-                                Icon(imageVector = Icons.Outlined.Delete, contentDescription = "delete label")
-                            }
+                SettingItem(
+                    title = item.label ?: stringResource(id = item.labelResId),
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.DragHandle,
+                            contentDescription = "drag",
+                            tint = MaterialTheme.colorScheme.onSurface
                         )
-                    }
-                    SettingItem(
-                        title = item.label ?: stringResource(id = item.labelResId),
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Outlined.DragHandle,
-                                contentDescription = "drag",
-                                tint = MaterialTheme.colorScheme.onSurface
-                            )
-                        },
-                        trailingIcon = {
+                    },
+                    trailingIcon = {
+                        Box {
+                            var isMenuVisible by remember {
+                                mutableStateOf(false)
+                            }
+                            CascadeDropdownMenu(
+                                expanded = isMenuVisible,
+                                onDismissRequest = { isMenuVisible = false },
+                                offset = DpOffset(16.dp, 0.dp),
+                                properties = PopupProperties(
+                                    dismissOnBackPress = true,
+                                    dismissOnClickOutside = true,
+                                    focusable = true
+                                ),
+                                shape = MaterialTheme.shapes.medium,
+                            ) {
+                                androidx.compose.material3.DropdownMenuItem(
+                                    text = { Text("删除") },
+                                    onClick = {
+                                        onMainSharedEvent(MainSharedEvent.OnChatFilterRemoved(item))
+                                        isMenuVisible = false
+                                    },
+                                    leadingIcon = {
+                                        Icon(imageVector = Icons.Outlined.Delete, contentDescription = "delete label")
+                                    }
+                                )
+                            }
                             IconButton(onClick = {
                                 isMenuVisible = true
                             }) {
@@ -289,15 +289,15 @@ private fun Content(
                                     tint = MaterialTheme.colorScheme.onSurface
                                 )
                             }
-                        },
-                        selected = isDragging,
-                        layoutType = layoutType,
-                        clickableOnly = true
-                    ) {
-                        if (item is ChatFilter.Tag) {
-                            onEvent(SettingPageEvent.UpdateSelectedTagLabel(item))
-                            navigation.pushNew(DefaultSettingComponent.SettingConfig.LabelDetailSetting)
                         }
+                    },
+                    selected = isDragging,
+                    layoutType = layoutType,
+                    clickableOnly = true
+                ) {
+                    if (item is ChatFilter.Tag) {
+                        onEvent(SettingPageEvent.UpdateSelectedTagLabel(item))
+                        navigation.pushNew(DefaultSettingComponent.SettingConfig.LabelDetailSetting)
                     }
                 }
             }

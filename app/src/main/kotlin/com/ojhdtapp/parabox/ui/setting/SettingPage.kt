@@ -123,7 +123,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.GeneralSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.GeneralSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.GENERAL)
                         }
@@ -143,7 +143,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.ExtensionSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.ExtensionSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.ADDONS)
                         }
@@ -163,7 +163,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.LabelSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.LabelSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.LABELS)
                         }
@@ -183,7 +183,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.AppearanceSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.AppearanceSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.APPEARANCE)
                         }
@@ -203,7 +203,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.NotificationSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.NotificationSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.NOTIFICATION)
                         }
@@ -223,7 +223,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.StorageSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.StorageSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.STORAGE)
                         }
@@ -243,7 +243,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.CloudSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.CloudSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.CLOUD)
                         }
@@ -263,7 +263,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.ExperimentalSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.ExperimentalSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.EXPERIMENTAL)
                         }
@@ -283,7 +283,7 @@ fun SettingPage(
                     navigation.bringToFront(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting) {
                         navigation.replaceAll(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting)
                     }
-                    if (layoutType == LayoutType.NORMAL) {
+                    if (layoutType != LayoutType.SPLIT) {
                         coroutineScope.launch {
                             scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.HELP)
                         }

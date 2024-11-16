@@ -104,55 +104,73 @@ fun SettingPageWrapperUi(
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.GeneralSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.GeneralSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.GENERAL)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.GENERAL)
+                                }
                             }
                             SettingNavigateTarget.ADDONS -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.ExtensionSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.ExtensionSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.ADDONS)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.ADDONS)
+                                }
                             }
                             SettingNavigateTarget.LABELS -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.LabelSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.LabelSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.LABELS)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.LABELS)
+                                }
                             }
                             SettingNavigateTarget.APPEARANCE -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.AppearanceSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.AppearanceSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.APPEARANCE)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.APPEARANCE)
+                                }
                             }
                             SettingNavigateTarget.NOTIFICATION -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.NotificationSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.NotificationSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.NOTIFICATION)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.NOTIFICATION)
+                                }
                             }
                             SettingNavigateTarget.STORAGE -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.StorageSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.StorageSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.STORAGE)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.STORAGE)
+                                }
                             }
                             SettingNavigateTarget.CLOUD -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.CloudSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.CloudSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.CLOUD)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.CLOUD)
+                                }
                             }
                             SettingNavigateTarget.EXPERIMENTAL -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.ExperimentalSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.ExperimentalSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.EXPERIMENTAL)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.EXPERIMENTAL)
+                                }
                             }
                             SettingNavigateTarget.HELP -> {
                                 component.settingNav.bringToFront(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting) {
                                     component.settingNav.replaceAll(DefaultSettingComponent.SettingConfig.HelpAndSupportSetting)
                                 }
-                                scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.HELP)
+                                if (layoutType != LayoutType.SPLIT) {
+                                    scaffoldNavigator.navigateTo(ThreePaneScaffoldRole.Primary, Setting.HELP)
+                                }
                             }
                         }
                     }

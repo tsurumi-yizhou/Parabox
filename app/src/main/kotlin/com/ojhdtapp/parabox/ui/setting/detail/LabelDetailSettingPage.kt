@@ -1,6 +1,7 @@
 package com.ojhdtapp.parabox.ui.setting.detail
 
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.PredictiveBackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -72,9 +73,6 @@ fun LabelDetailSettingPage(
     onEvent: (SettingPageEvent) -> Unit,
     onMainSharedEvent: (MainSharedEvent) -> Unit,
 ) {
-    BackHandler {
-        navigation.pop()
-    }
     if (layoutType == LayoutType.SPLIT) {
         Surface(
             modifier = Modifier
@@ -242,7 +240,7 @@ private fun Content(
         item {
             SettingItem(title = "添加会话", selected = false, layoutType = layoutType,
                 leadingIcon = {
-                    Icon(imageVector = Icons.Outlined.AddComment, contentDescription = "添加会话")
+                    Icon(imageVector = Icons.Outlined.AddComment, contentDescription = "添加会话", tint = MaterialTheme.colorScheme.onSurface)
                 }) {
                 onMainSharedEvent(MainSharedEvent.PickChat(
                     onDone = { chat ->
@@ -265,7 +263,7 @@ private fun Content(
         item {
             SettingItem(title = "移除该标签", selected = false, layoutType = layoutType,
                 leadingIcon = {
-                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = "移除该标签")
+                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = "移除该标签", tint = MaterialTheme.colorScheme.onSurface)
                 }) {
                 if (state.labelDetailState.selected != null) {
                     onMainSharedEvent(MainSharedEvent.OnChatFilterRemoved(state.labelDetailState.selected))
